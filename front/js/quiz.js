@@ -84,11 +84,11 @@ function updateUI(data, dataId) {
                     <ul>
                         <li id="ok">
                             <div class="text">된다</div>
-                            <div class="img_area"><img src="../images/menok.png" alt="ok"></div>
+                            <div class="img_area"><img src="./images/menok.png" alt="ok"></div>
                         </li>
                         <li id="no">
                             <div class="text">안된다</div>
-                            <div class="img_area"><img src="../images/womenx.png" alt="no"></div>
+                            <div class="img_area"><img src="./images/womenx.png" alt="no"></div>
                         </li>
                     </ul>
                 </div>
@@ -126,11 +126,11 @@ function updateUI(data, dataId) {
                     <ul>
                         <li id="ok">
                             <div class="text">된다</div>
-                            <div class="img_area"><img src="../images/menok.png" alt="ok"></div>
+                            <div class="img_area"><img src="./images/menok.png" alt="ok"></div>
                         </li>
                         <li id="no">
                             <div class="text">안된다</div>
-                            <div class="img_area"><img src="../images/womenx.png" alt="no"></div>
+                            <div class="img_area"><img src="./images/womenx.png" alt="no"></div>
                         </li>
                     </ul>
                 </div>
