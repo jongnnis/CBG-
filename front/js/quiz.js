@@ -4,7 +4,7 @@ try {
     var dataId = params.get('dataId');
 
     if (dataId === 'random') {
-        fetch('http://127.0.0.1:8000/question/random', {
+        fetch('http://3.133.40.61:8000/question/random', {
             method: 'get',
             headers: {
                 'Content-Type': 'application/json'
@@ -14,7 +14,7 @@ try {
         .then(data => updateUI(data, dataId))
         .catch(error => console.error('Error fetching random question:', error));
     } else {
-        fetch(`http://127.0.0.1:8000/question/${dataId}`, {
+        fetch(`http://3.133.40.61:8000/question/${dataId}`, {
             method: 'get',
             headers: {
                 'Content-Type': 'application/json'

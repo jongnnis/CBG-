@@ -26,7 +26,7 @@ function make_chatbot(dataId){
         chatbot.innerHTML = `
         <div class="profile">
             <div class="imgdiv">
-                <img src="../images/girl.png" alt="roni" class="imgpro">
+                <img src="./images/girl.png" alt="roni" class="imgpro">
             </div>
         </div>
         <div class="chatbox">
@@ -43,7 +43,7 @@ function make_chatbot(dataId){
         chatbot.innerHTML = `
         <div class="profile">
             <div class="imgdiv">
-                <img src="../images/boy.png" alt="roni" class="imgpro">
+                <img src="./images/boy.png" alt="roni" class="imgpro">
             </div>
         </div>
         <div class="chatbox">
@@ -67,7 +67,6 @@ document.addEventListener('keydown', (e) => {
         send.click();
     }
 });
-
 send.addEventListener('click', (e)=> {
     // 전송 버튼 비활성화
     send.disabled = true;
@@ -100,7 +99,25 @@ send.addEventListener('click', (e)=> {
             // const jsonData = JSON.stringify(formData)
     
             if(dataId === 'no'){
-                fetch(`http://127.0.0.1:8000/chat_no`, {
+                const chatting = document.getElementById('chatting');
+                const chatbot = document.createElement('div');
+                chatbot.className = 'chatbot';
+                
+                chatbot.innerHTML = `
+                    <div class="profile">
+                        <div class="imgdiv">
+                            <img src="./images/boy.png" alt="toni" class="imgpro">
+                        </div>
+                    </div>
+                    <div class="chatbox">
+                        <div class="name">토니</div>
+                        <div class="contentC"><img style="width: 3rem; height: 2.5rem;" src="./images/loading.gif"></div>
+                    </div>`;
+
+                chatting.appendChild(chatbot);
+                chatting.scrollTop = chatting.scrollHeight;
+
+                fetch(`http://3.133.40.61:8000/chat_no`, {
                     method: 'post',
                     headers: {
                         'Content-Type': 'application/json'
@@ -112,24 +129,38 @@ send.addEventListener('click', (e)=> {
                 })
                 .then(res => res.json())
                 .then(data => {
-                    const chatting = document.getElementById('chatting');
-                    const chatbot = document.createElement('div');
-                    chatbot.className = 'chatbot';
                     chatbot.innerHTML = `
                     <div class="profile">
                         <div class="imgdiv">
-                            <img src="./images/boy.png" alt="toni" class="imgpro">
+                            <img src="./images/boy.png" alt="roni" class="imgpro">
                         </div>
                     </div>
                     <div class="chatbox">
                         <div class="name">토니</div>
                         <div class="contentC">${data.prediction}</div>
                     </div>`;
-                    chatting.appendChild(chatbot);
                     chatting.scrollTop = chatting.scrollHeight;
                 })
             }else if(dataId === 'ok'){
-                fetch(`http://127.0.0.1:8000/chat_ok`, {
+                const chatting = document.getElementById('chatting');
+                const chatbot = document.createElement('div');
+                chatbot.className = 'chatbot';
+                
+                chatbot.innerHTML = `
+                    <div class="profile">
+                        <div class="imgdiv">
+                            <img src="./images/girl.png" alt="roni" class="imgpro">
+                        </div>
+                    </div>
+                    <div class="chatbox">
+                        <div class="name">로니</div>
+                        <div class="contentC"><img style="width: 3rem; height: 2.5rem;" src="./images/loading.gif"></div>
+                    </div>`;
+
+                chatting.appendChild(chatbot);
+                chatting.scrollTop = chatting.scrollHeight;
+
+                fetch(`http://3.133.40.61:8000/chat_ok`, {
                 method: 'post',
                 headers: {
                     'Content-Type': 'application/json'
@@ -141,20 +172,19 @@ send.addEventListener('click', (e)=> {
             })
             .then(res => res.json())
             .then(data => {
-                const chatting = document.getElementById('chatting');
-                const chatbot = document.createElement('div');
-                chatbot.className = 'chatbot';
-                chatbot.innerHTML = `
-                <div class="profile">
-                    <div class="imgdiv">
-                        <img src="./images/girl.png" alt="roni" class="imgpro">
+                
+                if (data.prediction) {
+                    chatbot.innerHTML = `
+                    <div class="profile">
+                        <div class="imgdiv">
+                            <img src="./images/girl.png" alt="roni" class="imgpro">
+                        </div>
                     </div>
-                </div>
-                <div class="chatbox">
-                    <div class="name">로니</div>
-                    <div class="contentC">${data.prediction}</div>
-                </div>`;
-                chatting.appendChild(chatbot);
+                    <div class="chatbox">
+                        <div class="name">로니</div>
+                        <div class="contentC">${data.prediction}</div>
+                    </div>`;
+                }
                 chatting.scrollTop = chatting.scrollHeight;
             })
         } 

@@ -2,7 +2,7 @@
 let idList = []
 try {
     // fetch(`https://port-0-cbg-project-ghdys32blrzmx1y1.sel5.cloudtype.app/question/getAll`)
-        fetch('http://127.0.0.1:8000/question/getAll', {
+        fetch('http://3.133.40.61:8000/question/getAll', {
             method: 'get',
             headers: {
             'Content-Type': 'application/json'
